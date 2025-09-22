@@ -75,3 +75,43 @@ p {
   z-index: 100;
   display: none;
 }
+
+.oculta {
+  display: none;
+}
+
+.visible {
+  display: block;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+/* Overlay negro con fondo dinámico */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 100;
+  display: none;
+  pointer-events: none; /* Permite que el mouse pase a través si necesitas */
+  overflow: hidden;
+}
+
+.lucha {
+  font-size: 100px;
+  font-family: "Bebas Neue", sans-serif;
+  color: white;
+  position: absolute;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  transition: top 0.05s linear, left 0.05s linear;
+  text-shadow: 0 0 10px white;
+}
