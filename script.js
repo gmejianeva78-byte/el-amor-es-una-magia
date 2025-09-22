@@ -18,15 +18,19 @@ const nombres = [
   "Isabella","Malak","Elia","Carolina","Berta","Fátima","Nuria","Azahara","Macarena","Aurora"
 ];
 
-// Renderizar los nombres en el overlay
+// Un solo texto corrido con espacios
 function mostrarNombres() {
-  namesContainer.innerHTML = ""; // limpio antes
-  nombres.forEach(nombre => {
-    const p = document.createElement("p");
-    p.textContent = nombre;
-    namesContainer.appendChild(p);
-  });
+  const texto = nombres.join(" ");
+  namesContainer.textContent = texto;
 }
+
+// Efecto linterna
+overlay.addEventListener("mousemove", e => {
+  const x = e.clientX;
+  const y = e.clientY;
+  namesContainer.style.webkitMaskImage = `radial-gradient(circle 120px at ${x}px ${y}px, rgba(255,255,255,1) 98%, transparent 100%)`;
+  namesContainer.style.maskImage = `radial-gradient(circle 120px at ${x}px ${y}px, rgba(255,255,255,1) 98%, transparent 100%)`;
+});
 
 sideTab.addEventListener('click', () => {
   message.style.display = 'block';
@@ -37,7 +41,7 @@ sideTab.addEventListener('click', () => {
       overlay.style.display = 'block';
       setTimeout(() => {
         overlay.style.display = 'none';
-      }, 3000); // 3 segundos
+      }, 3000); // visible 3 segundos
     }, 30000); // cada 30 segundos
   }
 });
