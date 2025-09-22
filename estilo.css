@@ -76,7 +76,6 @@ p {
   display: none;
   overflow: hidden;
 }
-
 /* Contenedor de los nombres dentro del overlay */
 .names {
   width: 100%;
@@ -89,4 +88,9 @@ p {
   padding: 40px;
   box-sizing: border-box;
   white-space: pre-wrap;
+  opacity:0;
+
+  /* Al inicio todo oculto */
+  -webkit-mask-image: none;
+  mask-image: none;
 }

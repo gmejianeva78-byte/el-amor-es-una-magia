@@ -28,6 +28,7 @@ function mostrarNombres() {
 overlay.addEventListener("mousemove", e => {
   const x = e.clientX;
   const y = e.clientY;
+  namesContainer.style.opacity = "1";
   namesContainer.style.webkitMaskImage = `radial-gradient(circle 120px at ${x}px ${y}px, rgba(255,255,255,1) 98%, transparent 100%)`;
   namesContainer.style.maskImage = `radial-gradient(circle 120px at ${x}px ${y}px, rgba(255,255,255,1) 98%, transparent 100%)`;
 });
@@ -39,9 +40,10 @@ sideTab.addEventListener('click', () => {
     intervalId = setInterval(() => {
       mostrarNombres();
       overlay.style.display = 'block';
+      
       setTimeout(() => {
         overlay.style.display = 'none';
-      }, 3000); // visible 3 segundos
-    }, 30000); // cada 30 segundos
+      }, 30000); // visible 3 segundos
+    }, 3000); // cada 30 segundos
   }
 });
