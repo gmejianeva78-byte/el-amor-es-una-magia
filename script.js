@@ -15,3 +15,4 @@ sideTab.addEventListener('click', () => {
     }, 30000); // cada 30 segundos
   }
 });
+
