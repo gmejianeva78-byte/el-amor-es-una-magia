@@ -111,7 +111,6 @@ p {
   color: white;
   position: absolute;
   pointer-events: none;
-  mix-blend-mode: difference;
-  transition: top 0.05s linear, left 0.05s linear;
-  text-shadow: 0 0 10px white;
+  mix-blend-mode: difference; /* Cambia el modo de fusión para el efecto */
 }
+
