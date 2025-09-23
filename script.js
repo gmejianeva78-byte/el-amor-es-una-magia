@@ -43,7 +43,7 @@ sideTab.addEventListener('click', () => {
       
       setTimeout(() => {
         overlay.style.display = 'none';
-      }, 30000); // visible 3 segundos
-    }, 3000); // cada 30 segundos
+      }, 5000); // visible 5 segundos
+    }, 15000); // cada 15 segundos
   }
 });

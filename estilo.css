@@ -25,20 +25,21 @@ body {
 }
 
 h1 {
-  font-size: 60rem;
+  font-size: 35rem;
   margin-bottom: 20px;
   margin-top: 0%;
   font-family: "Fjalla One", system-ui;
 }
 
 p {
-  font-size: 1.2rem;
-  line-height: 1.6;
+  font-size: 4rem;
+  line-height: 1;
+  font-family: "Cormorant Garamond", serif;
 }
 
 /* Pestaña lateral negra */
 .side-tab {
-  position: absolute;
+  position: fixed;
   top: 50%;
   right: 0;
   color: white;
