@@ -7,15 +7,19 @@ body {
   background-color: #d00000;
   font-family: Arial, sans-serif;
   color: black;
-  overflow: hidden;
+  overflow-x: hidden;   /* bloquea solo scroll horizontal */
+  overflow-y: auto;     /* permite scroll vertical */
+  min-height: 100vh;    /* el body siempre ocupa pantalla completa */
 }
 
 .contenedor {
   display: flex;
-  height: 100vh;
+  flex-direction: column;  /* que se apilen los textos */
+  min-height: 100vh;       /* mínimo una pantalla */
   position: relative;
   padding: 40px;
-  overflow-y: auto;
+  padding-bottom: 5px;   /* 👈 espacio extra rojo al final */
+  box-sizing: border-box;  /* para que el padding no rompa el tamaño */
 }
 
 /* Contenido principal */
@@ -43,12 +47,11 @@ p {
     unicode-bidi: isolate;
 }
 
-/* Pestaña lateral negra */
 .side-tab {
   position: fixed;
   top: 50%;
   right: 0;
-  color: white;
+  color: white;          /* color inicial de la flecha */
   width: 250px;
   height: 250px;
   display: flex;
@@ -58,6 +61,11 @@ p {
   transform: translateY(-50%);
   font-size: 20rem;
   z-index: 10;
+  transition: color 0.3s ease; /* solo transición de color */
+}
+
+.side-tab:hover {
+  color: black; /* la flecha cambia de blanco a negro */
 }
 
 /* Mensaje oculto inicialmente */
@@ -67,6 +75,7 @@ p {
   right: 60px;
   color: white;
   font-size: 2rem;
+  font-family: "Cormorant Garamond", serif;
   display: none;
   z-index: 50;
 }
