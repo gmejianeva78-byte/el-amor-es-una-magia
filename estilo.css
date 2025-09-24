@@ -143,10 +143,21 @@ p2 {
 
 /* --- Estilo de cada imagen --- */
 .imagen {
-  width: 200px;        /* tamaño fijo de ancho */
-  height: auto;        /* mantiene proporción */
-  border-radius: 10px; /* bordes redondeados */
-  object-fit: cover;   /* recorta bien la foto */
+  width: 200px;         /* ancho fijo */
+  height: 250px;        /* altura fija */
+  border-radius: 10px;
+  object-fit: cover;    /* recorta sin deformar */
   border: 2px solid white;
   box-shadow: 0 4px 10px rgba(255,255,255,0.3);
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.caption {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
 }

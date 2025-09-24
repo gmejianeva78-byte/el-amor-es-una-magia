@@ -5,29 +5,40 @@ const victimas = document.getElementById('victimas'); // contenedor de imágenes
 
 let intervalId = null;
 
-// Array con las rutas de tus imágenes
+// Array con las rutas de tus imágenes y sus nombres
 const imagenes = [
-  "imagenes/ANA MARIA.jpg",
-  "imagenes/MAITE CARDENAS.jpg",
-  "imagenes/lady.jpg",
-  "imagenes/sandra.jpg",
-  "imagenes/VALENTINA.jpg",
-  "imagenes/yamile.jpg",
-  "imagenes/YUDY PAOLA.jpg",
-  "imagenes/ERIKA APONTE.jpg",
-  "imagenes/VIVIANA CHAMORRO.jpg",
-  "imagenes/sinfoto.png"
+  { src: "imagenes/ANA MARIA.jpg", nombre: "ANA MARIA" },
+  { src: "imagenes/MAITE CARDENAS.jpg", nombre: "MAITE CARDENAS" },
+  { src: "imagenes/lady.jpg", nombre: "LADY" },
+  { src: "imagenes/sandra.jpg", nombre: "SANDRA" },
+  { src: "imagenes/VALENTINA.jpg", nombre: "VALENTINA" },
+  { src: "imagenes/yamile.jpg", nombre: "YAMILE" },
+  { src: "imagenes/YUDY PAOLA.jpg", nombre: "YUDY PAOLA" },
+  { src: "imagenes/ERIKA APONTE.jpeg", nombre: "ERIKA APONTE" },
+  { src: "imagenes/VIVIANA CHAMORRO.jpg", nombre: "VIVIANA CHAMORRO" },
+  { src: "imagenes/sinfoto.png", nombre: "SIN FOTO" }
 ];
 
-// Función para insertar las imágenes en #victimas
+// Función para insertar las imágenes con nombre en #victimas
 function mostrarImagenes() {
   victimas.innerHTML = ""; // limpia antes de volver a llenar
 
-  imagenes.forEach(src => {
+  imagenes.forEach(item => {
+    const contenedor = document.createElement("div");
+    contenedor.classList.add("item");
+
     const img = document.createElement("img");
-    img.src = src;
+    img.src = item.src;
     img.classList.add("imagen");
-    victimas.appendChild(img);
+
+    const caption = document.createElement("div");
+    caption.classList.add("caption");
+    caption.textContent = item.nombre;
+
+    contenedor.appendChild(img);
+    contenedor.appendChild(caption);
+
+    victimas.appendChild(contenedor);
   });
 }
 
@@ -57,10 +68,10 @@ sideTab.addEventListener('click', () => {
 // 👉 Efecto linterna sobre las imágenes
 overlay.addEventListener("mousemove", e => {
   const x = e.clientX;
-  const y = e.clientY -500;
+  const y = e.clientY - 500;
 
-  //victimas.style.webkitMaskImage = `radial-gradient(circle 120px at ${x}px ${y}px, rgba(255,255,255,1) 98%, transparent 100%)`;
   victimas.style.maskImage = `radial-gradient(circle 120px at ${x}px ${y}px, rgba(255,255,255,1) 98%, transparent 100%)`;
+  victimas.style.webkitMaskImage = `radial-gradient(circle 120px at ${x}px ${y}px, rgba(255,255,255,1) 98%, transparent 100%)`; // para compatibilidad
 });
 
 
