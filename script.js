@@ -1,49 +1,66 @@
 const sideTab = document.getElementById('sideTab');
 const message = document.getElementById('message');
 const overlay = document.getElementById('overlay');
-const namesContainer = document.getElementById('names');
+const victimas = document.getElementById('victimas'); // contenedor de imágenes
 
 let intervalId = null;
 
-const nombres = [
-  "Lucía","Sofía","Martina","María","Julia","Paula","Valeria","Emma","Daniela","Carla",
-  "Alba","Noa","Alma","Sara","Carmen","Vega","Lara","Mia","Valentina","Olivia",
-  "Claudia","Jimena","Lola","Chlóe","Aitana","Abril","Ana","Laia","Triana","Candela",
-  "Alejandra","Elena","Vera","Manuela","Adriana","Inés","Marta","Carlota","Irene","Victoria",
-  "Blanca","Marina","Laura","Rocío","Alicia","Clara","Nora","Lía","Ariadna","Zoe",
-  "Amira","Gala","Celia","Leire","Eva","Ángela","Andrea","África","Luna","Ainhoa",
-  "Ainara","India","Nerea","Ona","Elsa","Isabel","Leyre","Gabriela","Aina","Cayetana",
-  "Iria","Jana","Mar","Cloe","Lina","Julieta","Adara","Naia","Iris","Nour",
-  "Mara","Helena","Yasmín","Natalia","Arlet","Diana","Aroa","Amaia","Cristina","Nahia",
-  "Isabella","Malak","Elia","Carolina","Berta","Fátima","Nuria","Azahara","Macarena","Aurora"
+// Array con las rutas de tus imágenes
+const imagenes = [
+  "imagenes/ANA MARIA.jpg",
+  "imagenes/MAITE CARDENAS.jpg",
+  "imagenes/lady.jpg",
+  "imagenes/sandra.jpg",
+  "imagenes/VALENTINA.jpg",
+  "imagenes/yamile.jpg",
+  "imagenes/YUDY PAOLA.jpg",
+  "imagenes/ERIKA APONTE.jpg",
+  "imagenes/VIVIANA CHAMORRO.jpg",
+  "imagenes/sinfoto.png"
 ];
 
-// Un solo texto corrido con espacios
-function mostrarNombres() {
-  const texto = nombres.join(" ");
-  namesContainer.textContent = texto;
+// Función para insertar las imágenes en #victimas
+function mostrarImagenes() {
+  victimas.innerHTML = ""; // limpia antes de volver a llenar
+
+  imagenes.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.classList.add("imagen");
+    victimas.appendChild(img);
+  });
 }
 
-// Efecto linterna
-overlay.addEventListener("mousemove", e => {
-  const x = e.clientX;
-  const y = e.clientY;
-  namesContainer.style.opacity = "1";
-  namesContainer.style.webkitMaskImage = `radial-gradient(circle 120px at ${x}px ${y}px, rgba(255,255,255,1) 98%, transparent 100%)`;
-  namesContainer.style.maskImage = `radial-gradient(circle 120px at ${x}px ${y}px, rgba(255,255,255,1) 98%, transparent 100%)`;
-});
+// 👉 función que abre y cierra el overlay 5 segundos
+function mostrarOverlay() {
+  mostrarImagenes();
+  overlay.style.display = "block";
 
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 5000);
+}
+
+// Evento principal del botón lateral
 sideTab.addEventListener('click', () => {
   message.style.display = 'block';
 
+  // mostrar inmediatamente la primera vez
+  mostrarOverlay();
+
+  // y repetir cada 15 segundos
   if (!intervalId) {
-    intervalId = setInterval(() => {
-      mostrarNombres();
-      overlay.style.display = 'block';
-      
-      setTimeout(() => {
-        overlay.style.display = 'none';
-      }, 5000); // visible 5 segundos
-    }, 15000); // cada 15 segundos
+    intervalId = setInterval(mostrarOverlay, 15000);
   }
 });
+
+// 👉 Efecto linterna sobre las imágenes
+overlay.addEventListener("mousemove", e => {
+  const x = e.clientX;
+  const y = e.clientY -500;
+
+  //victimas.style.webkitMaskImage = `radial-gradient(circle 120px at ${x}px ${y}px, rgba(255,255,255,1) 98%, transparent 100%)`;
+  victimas.style.maskImage = `radial-gradient(circle 120px at ${x}px ${y}px, rgba(255,255,255,1) 98%, transparent 100%)`;
+});
+
+
